@@ -1,9 +1,10 @@
 <?php
 require "../models/dao.php";
-// Définition d'un tableau des erreurs
+// Définition des variables
 $errors = [];
 $success = [];
 $errorPDO = "Désolé impossible de communiquer avec la base de données";
+$isPosted = count($_POST) > 0;
 
 try {
     // Création d un objet connexion
@@ -16,7 +17,7 @@ try {
 
 
     // true si un formulaire est posté
-    $isPosted = count($_POST) > 0;
+    
 
 
     // Test si un formulaire a été posté
@@ -70,7 +71,7 @@ try {
             } else {
                 array_push($errors,"Veuillez renseigner tous les champs pour l'ajout");
             } /**** endif test données renseignés bouton add */
-        }/**** endif isset($_POST['add']) ***/   
+        }/**** endif isset($_POST['add']) ***/
     } /****** endif($isPosted)   ******/
 
 
