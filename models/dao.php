@@ -16,9 +16,9 @@ function searchProductByName($db){
     $testName->execute([$_POST['product_name']]);
     $verif = $testName->fetch(PDO::FETCH_ASSOC);
     if(empty($verif)){
-        return true;
+        return false;
     }
-    return false;
+    return true;
 }
 // Vérification par l'id existe dans la BD
 function searchProductById($db,$id){

@@ -30,12 +30,13 @@ try {
             if(!empty($_POST["product_name"]) && !empty($_POST["price"]) && $_POST["category"] != "Choisissez une catégorie..."){
                 // Vérification que l'id existe dans la BD
                 $exist = searchProductById($db,$_POST["id"]);
-                if($exist){
+                $inBD = searchProductByName($db);
+                if($exist && !$inBD){
                     updateProduct($db);
                     $productsList = getList($db);
                     array_push($success,"La modification a bien été enregistrée");
                 } else {
-                    array_push($errors,"Désolé la Réference renseignées n'existe pas");
+                    array_push($errors,"Désolé la Réference renseignées n'existe pas ou le nom nom du produit existe déjà");
                 }/****** endif vérification que le produit existe  *****/
             } else {
                 array_push($errors,"Veuillez renseigner tous les champs pour la modification");
@@ -56,9 +57,9 @@ try {
             // test si toutes les données sont renseignées
             if(!empty($_POST["product_name"]) && !empty($_POST["price"]) && $_POST["category"] != "Choisissez une catégorie..."){
                 // test si l'article est déjà existant dans la bd
-                $verif = searchProductByName($db);
+                $inBD = searchProductByName($db);
                 // si le produit n'existe pas on l'ajoute
-                if($verif){
+                if(!$inBD){
                     // ajout du produit à la base de données
                     addProduct($db);
                     $productsList = getList($db);
