@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS products;
 CREATE TABLE products(
     id INT UNSIGNED AUTO_INCREMENT,
     product_name VARCHAR(50) NOT NULL,
-    price FLOAT(10) NOT NULL,
+    price DECIMAL(5,2) NOT NULL,
     category VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
 );

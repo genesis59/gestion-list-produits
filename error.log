@@ -1,0 +1,2 @@
+2020-09-18 16:55:31	could not find driver
+2020-09-18 16:56:53	SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DELET FROM products WHERE id=8' at line 1

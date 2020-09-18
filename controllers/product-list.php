@@ -17,9 +17,6 @@ try {
 
 
     // true si un formulaire est posté
-    
-
-
     // Test si un formulaire a été posté
     if($isPosted){
 
@@ -79,6 +76,9 @@ try {
 } catch(PDOException $err){
     // Affichage d'une erreur si impossible de se connecter à la BD
     array_push($errors,$errorPDO);
+    $fileName = "../error.log";
+    $content = date("Y-m-d H:i:s") . "\t" . $err->getMessage() . "\r\n";
+    file_put_contents($fileName,$content,FILE_APPEND | LOCK_EX);
 } /*** end try catch pdo */
 
 include "../views/view-product-list.php";
